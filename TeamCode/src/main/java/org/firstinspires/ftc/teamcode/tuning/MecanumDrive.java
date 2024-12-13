@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.tuning;
 
 import androidx.annotation.NonNull;
 
@@ -41,10 +41,10 @@ import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
-import org.firstinspires.ftc.teamcode.messages.DriveCommandMessage;
-import org.firstinspires.ftc.teamcode.messages.MecanumCommandMessage;
-import org.firstinspires.ftc.teamcode.messages.MecanumLocalizerInputsMessage;
-import org.firstinspires.ftc.teamcode.messages.PoseMessage;
+import org.firstinspires.ftc.teamcode.tuning.messages.DriveCommandMessage;
+import org.firstinspires.ftc.teamcode.tuning.messages.MecanumCommandMessage;
+import org.firstinspires.ftc.teamcode.tuning.messages.MecanumLocalizerInputsMessage;
+import org.firstinspires.ftc.teamcode.tuning.messages.PoseMessage;
 
 import java.lang.Math;
 import java.util.Arrays;
@@ -65,16 +65,16 @@ public class MecanumDrive {
         // drive model parameters
         public double inPerTick = 1; // SparkFun OTOS Note: you can probably leave this at 1
         public double lateralInPerTick = inPerTick;
-        public double trackWidthTicks = 16.5;
+        public double trackWidthTicks = 11.25;
 
         // feedforward parameters (in tick units)
         // correct rotation
-        public double kS = 0.8381047158216917;
-        public double kV = 0.1705;
+        public double kS = 0.8060590418727696;
+        public double kV = 0.19152901522037546;
         public double kA = 0.023;
 
         // path profile parameters (in inches)
-        public double maxWheelVel = 25;
+        public double maxWheelVel = 50;
         public double minProfileAccel = -30;
         public double maxProfileAccel = 50;
 
@@ -218,10 +218,10 @@ public class MecanumDrive {
 
         // TODO: make sure your config has motors with these names (or change them)
         //   see https://ftc-docs.firstinspires.org/en/latest/hardware_and_software_configuration/configuring/index.html
-        leftFront = hardwareMap.get(DcMotorEx.class, "FL");
-        leftBack = hardwareMap.get(DcMotorEx.class, "BL");
-        rightBack = hardwareMap.get(DcMotorEx.class, "BR");
-        rightFront = hardwareMap.get(DcMotorEx.class, "FR");
+        leftFront = hardwareMap.get(DcMotorEx.class, "fl");
+        leftBack = hardwareMap.get(DcMotorEx.class, "bl");
+        rightBack = hardwareMap.get(DcMotorEx.class, "br");
+        rightFront = hardwareMap.get(DcMotorEx.class, "fr");
 
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

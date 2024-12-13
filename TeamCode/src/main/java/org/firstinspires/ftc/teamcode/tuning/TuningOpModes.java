@@ -21,11 +21,11 @@ import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegistrar;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.internal.opmode.OpModeMeta;
-import org.firstinspires.ftc.teamcode.MecanumDrive;
-import org.firstinspires.ftc.teamcode.SparkFunOTOSDrive;
-import org.firstinspires.ftc.teamcode.TankDrive;
+import org.firstinspires.ftc.teamcode.common.PIDTuner;
+import org.firstinspires.ftc.teamcode.common.SparkFunOTOSDrive;
 import org.firstinspires.ftc.teamcode.ThreeDeadWheelLocalizer;
 import org.firstinspires.ftc.teamcode.TwoDeadWheelLocalizer;
 
@@ -199,6 +199,9 @@ public final class TuningOpModes {
         manager.register(metaForClass(ManualFeedbackTuner.class), ManualFeedbackTuner.class);
         manager.register(metaForClass(SplineTest.class), SplineTest.class);
         manager.register(metaForClass(LocalizationTest.class), LocalizationTest.class);
+        //manager.register(metaForClass(TeleOp.class), TeleOp.class);
+
+        manager.register(metaForClass(PIDTuner.class), PIDTuner.class);
 
         FtcDashboard.getInstance().withConfigRoot(configRoot -> {
             for (Class<?> c : Arrays.asList(

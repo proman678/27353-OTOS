@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.common;
 
 
 
@@ -15,7 +15,8 @@ import com.qualcomm.hardware.sparkfun.SparkFunOTOS;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.teamcode.messages.PoseMessage;
+import org.firstinspires.ftc.teamcode.tuning.MecanumDrive;
+import org.firstinspires.ftc.teamcode.tuning.messages.PoseMessage;
 
 /**
  * Experimental extension of MecanumDrive that uses the SparkFun OTOS sensor for localization.
@@ -39,7 +40,7 @@ public class SparkFunOTOSDrive extends MecanumDrive {
         // tweaked slightly to compensate for imperfect mounting (eg. 1.3 degrees).
 
         // RR localizer note: These units are inches and radians.
-        public SparkFunOTOS.Pose2D offset = new SparkFunOTOS.Pose2D(-0.75, 0, Math.toRadians(-90));
+        public SparkFunOTOS.Pose2D offset = new SparkFunOTOS.Pose2D(3.75, 3, Math.toRadians(90));
 
 
 
