@@ -13,7 +13,7 @@ public class LiftSubsystem extends SubsystemBase {
     private final PIDFController pidController;
 
     // PID coefficients
-    private static final double kP = 0.005;
+    private static final double kP = 0.04;
     private static final double kI = 0.0;
     private static final double kD = 0.0001;
     private static final double kF = 0.0;
@@ -61,14 +61,16 @@ public class LiftSubsystem extends SubsystemBase {
 
     public void update() {
         // Get current position and calculate the PID output
-        int currentPosition = liftMotor1.getCurrentPosition(); // Assume both motors have synchronized encoders
+        int currentPosition = liftMotor2.getCurrentPosition(); // Assume both motors have synchronized encoders
         double power = pidController.calculate(currentPosition, setpoint);
 
         // Set power to both motors
         liftMotor1.setPower(power);
         liftMotor2.setPower(power);
     }
-
+    public int getCurrentPosition(){
+        return liftMotor2.getCurrentPosition();
+    }
     public boolean atSetpoint() {
         return pidController.atSetPoint();
     }

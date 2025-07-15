@@ -6,6 +6,7 @@ import org.firstinspires.ftc.teamcode.subsystems.LiftSubsystem;
 public class LiftCommand extends CommandBase {
     private final LiftSubsystem liftSubsystem;
     private final int targetPosition;
+    private static final int TOLERANCE = 10;
 
     public LiftCommand(LiftSubsystem liftSubsystem, int targetPosition) {
         this.liftSubsystem = liftSubsystem;
@@ -25,7 +26,9 @@ public class LiftCommand extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        return liftSubsystem.atSetpoint();
+        int currentPosition = liftSubsystem.getCurrentPosition();
+        return Math.abs(currentPosition - targetPosition) <= TOLERANCE;
+        //return true;
     }
 
     @Override

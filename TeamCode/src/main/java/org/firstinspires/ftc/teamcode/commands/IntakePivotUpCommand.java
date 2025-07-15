@@ -1,19 +1,21 @@
 package org.firstinspires.ftc.teamcode.commands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
+
+import org.firstinspires.ftc.teamcode.subsystems.IntakePivotSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.ServoPivotSubsystem;
 
-public class ServoPivotRightCommand extends CommandBase {
-    private final ServoPivotSubsystem pivotSubsystem;
+public class IntakePivotUpCommand extends CommandBase {
+    private final IntakePivotSubsystem intakePivotSubsystem;
 
-    public ServoPivotRightCommand(ServoPivotSubsystem pivotSubsystem) {
-        this.pivotSubsystem = pivotSubsystem;
+    public IntakePivotUpCommand(IntakePivotSubsystem pivotSubsystem) {
+        this.intakePivotSubsystem = pivotSubsystem;
         addRequirements(pivotSubsystem);
     }
 
     @Override
     public void initialize() {
-        pivotSubsystem.moveToPositionRight();
+        intakePivotSubsystem.moveToPositionUp();
     }
 
     @Override
@@ -21,3 +23,4 @@ public class ServoPivotRightCommand extends CommandBase {
         return true; // Instant command
     }
 }
+

@@ -152,7 +152,7 @@ public class Auto extends LinearOpMode {
 
         LiftC outtakeSlide = new LiftC(hardwareMap);
 
-        Pose2d initialPose = new Pose2d(0, -61.5, Math.toRadians(-90));
+        Pose2d initialPose = new Pose2d(0, -61.5, Math.toRadians(180));
         SparkFunOTOSDrive drive = new SparkFunOTOSDrive(hardwareMap, initialPose);
 
         // vision here that outputs position
@@ -184,12 +184,6 @@ public class Auto extends LinearOpMode {
 
 */
 
-        Servo clawObj = hardwareMap.get(Servo.class, "outtakeClaw");
-        Servo clawPivotObj = hardwareMap.get(Servo.class, "outtakePivot");
-
-
-        clawObj.setPosition(0.3);
-        clawPivotObj.setPosition(0.0);
 
         waitForStart();
         if (isStopRequested()) return;
@@ -197,40 +191,9 @@ public class Auto extends LinearOpMode {
 
         Actions.runBlocking(
                 new SequentialAction(
-                        goToBar.build(),
-                        outtakeSlide.liftUp()
+                        goToBar.build()
                 )
         );
-        sleep(1000);
-        clawPivotObj.setPosition(0.6);
-        sleep(1000);
-        Actions.runBlocking(outtakeSlide.liftDown());
-        sleep(1000);
-        clawObj.setPosition(0.7);
-        clawPivotObj.setPosition(0.0);
-
-        Actions.runBlocking(
-                    goToHP.build()
-        );
-        //                    moveForwardToGrab.build(),
-        //                    goBackToBar.build(),
-        //                    goToObservation
-        clawPivotObj.setPosition(1);
-        sleep(1000);
-
-        Actions.runBlocking(
-                moveForwardToGrab.build()
-        );
-        clawObj.setPosition(0.3);
-        sleep(1000);
-
-        clawPivotObj.setPosition(0);
-        sleep(1000);
-
-        Actions.runBlocking(
-                goBackToBar.build()
-        );
-
 
 
     }

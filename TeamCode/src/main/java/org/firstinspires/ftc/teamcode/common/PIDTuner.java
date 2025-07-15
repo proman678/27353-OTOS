@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 public class PIDTuner extends OpMode {
     private PIDController controller;
 
-    public static double p = 0, i = 0, d = 0;
+    public static double p = 0.009, i = 0, d = 0.0001;
     public static double f = 0;
 
     public static int target = 0;
@@ -33,11 +33,20 @@ public class PIDTuner extends OpMode {
         liftMotor2 = hardwareMap.get(DcMotorEx.class, "liftMotor2");
 
         liftMotor2.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        liftMotor1.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+        liftMotor2.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+
+        liftMotor1.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        liftMotor2.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+
+        liftMotor1.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        liftMotor2.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
     }
 
     @Override public void loop() {
         controller.setPID(p, i , d);
-        int liftPos = liftMotor1.getCurrentPosition();
+        int liftPos = liftMotor2.getCurrentPosition();
         double pid = controller.calculate(liftPos, target);
         double ff = Math.cos(Math.toRadians(target/ ticks_in_degree)) * f;
 
