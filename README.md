@@ -1,5 +1,6 @@
 # 27353 - INTO THE DEEP REPOSITORY 2024-2025 SEASON
 
+ONSHAPE CAD: https://cad.onshape.com/documents/55392497915b48fcd3cd5f50/w/f5b2c167af884c0100fcd192/e/b93fdb84c0d0b084249e5738
 # SparkFun OTOS Quickstart for Roadrunner 1.0
 
 The SparkFun OTOS or Optical Tracking Odometry Sensor is an optical-based odometry sensor with an integrated IMU.
